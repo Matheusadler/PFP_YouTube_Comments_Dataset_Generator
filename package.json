@@ -1,0 +1,20 @@
+{
+  "name": "pfp_youtube_comments_dataset_generator",
+  "version": "1.0.0",
+  "description": "Aplicação para gerar datasets textuais preprocessados a partir de comentários de vídeos do YouTube",
+  "main": "js/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Matheusadler/PFP_YouTube_Comments_Dataset_Generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Matheusadler/PFP_YouTube_Comments_Dataset_Generator/issues"
+  },
+  "homepage": "https://github.com/Matheusadler/PFP_YouTube_Comments_Dataset_Generator#readme"
+}

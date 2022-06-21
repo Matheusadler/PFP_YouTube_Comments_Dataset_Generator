@@ -1,0 +1,3 @@
+# Modulos do Electron
+node_modules/
+package-lock.json
