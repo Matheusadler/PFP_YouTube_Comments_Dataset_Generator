@@ -2,7 +2,7 @@ const { ipcRenderer } = require('electron'); // importa a função de comunicaç
 const { PythonShell } = require('python-shell'); // importa a biblioteca para execução de scripts python
 var $ = jQuery = require('jquery'); // importa o jquery
 
-// o bloco abaixo é chamado após o html ser totalmente carregado
+// o bloco abaixo é chamado quando o html for totalmente carregado
 document.addEventListener('DOMContentLoaded', function () {
 
     var args = ipcRenderer.sendSync('get-options', ""); // pega os argumentos salvos na tela de index
