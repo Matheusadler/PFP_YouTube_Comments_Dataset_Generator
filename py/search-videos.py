@@ -23,7 +23,7 @@ def YoutubeSearch(query_string): # função que busca os videos no youtube
     return video_list # retorna a lista de videos
 
 
-if __name__ == '__main__': # função principal
+if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Busca videos no youtube") # cria o parser
     parser.add_argument("--path-destiny", type=str, required=True) # cria o argumento path-destiny
     parser.add_argument("--query-string", type=str, required=True) # cria o argumento query-string
