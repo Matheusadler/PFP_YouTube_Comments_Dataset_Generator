@@ -34,32 +34,32 @@ app.on("window-all-closed", ()=>{
 })
 
 // evento para salvar os arumentos selecionados
-ipcMain.on("save-options", (args) => { 
+ipcMain.on("save-options", (event, args) => {
     options = args[0]
 });
 
 // evento para acessar os arumentos salvos
-ipcMain.on("get-options", (event) => {
+ipcMain.on("get-options", (event, args) => {
     event.returnValue = [options]
 });
 
 // evento para salvar a quantidade de vídeos buscados na pesquisa
-ipcMain.on("save-video-length", (args) => {
+ipcMain.on("save-video-length", (event, args) => {
     text = args[0]
 });
 
 // evento para acessar a quantidade de vídeos buscados na pesquisa
-ipcMain.on("get-video-length", (event) => {
+ipcMain.on("get-video-length", (event, args) => {
     event.returnValue = [text]
 });
 
 // evento para salvar a quantidade de comentários coletados
-ipcMain.on("save-comments-length", (args) => {
+ipcMain.on("save-comments-length", (event, args) => {
     text = args[0]
 });
 
 // evento para acessar a quantidade de comentários coletados
-ipcMain.on("get-comments-length", (event) => {
+ipcMain.on("get-comments-length", (event, args) => {
     event.returnValue = [text]
 });
 
