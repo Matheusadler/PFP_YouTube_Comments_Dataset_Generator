@@ -7,9 +7,10 @@ document.addEventListener('DOMContentLoaded', function(){
     path_destiny = options[0]['args'][1]; // pega o caminho do diretório de destino
     query_string = options[0]['args'][3]; // pega a string de consulta
 
+    let name_file = query_string.replace(/\s/g, '_'); // substitui os espaços por underlines
     document.getElementById("card-title").innerHTML = "Foram gerados dois arquivos na pasta " + path_destiny + ":"; // informa ao usuário onde os arquivos foram gerados
-    document.getElementById("card-text").innerHTML = query_string + "_crawled.csv é o arquivo de comentários coletados dos vídeos. <br>" +
-                                                        query_string + "_preprocessed.csv é o arquivo de comentários coletados dos vídeos após o processamento."; // informa ao usuário os nomes dos arquivos que foram gerados
+    document.getElementById("card-text").innerHTML = name_file + "_crawled.csv é o arquivo com os comentários coletados dos vídeos. <br>" +
+                                                        name_file + "_preprocessed.csv é o arquivo com os comentários coletados dos vídeos após o processamento."; // informa ao usuário os nomes dos arquivos que foram gerados
 
     let returnButton = document.getElementById("returnButton"); // pega o botão de retorno
     returnButton.onclick = () => returnToIndex(); // quando o botão é clicado, chama a função de retorno para a tela inicial
