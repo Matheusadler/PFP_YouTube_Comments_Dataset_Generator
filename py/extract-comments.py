@@ -7,8 +7,6 @@ import requests
 import numpy as np
 import pandas as pd
 
-from tqdm import tqdm
-
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -136,7 +134,7 @@ if __name__ == '__main__':
     video_list = np.load('video_list.npy') # carrega a lista de vídeos
     
     progressbar = 0 # contador de progresso
-    for video_link in tqdm(video_list): 
+    for video_link in video_list: 
         main(video_link) # chama a função principal para cada vídeo
         with open('count.txt', 'a') as f: # abre o arquivo para escrita de progresso da barra
             f.write(str(progressbar) + '\n')
