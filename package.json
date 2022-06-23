@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/Matheusadler/PFP_YouTube_Comments_Dataset_Generator#readme",
   "devDependencies": {
-    "electron": "^19.0.1"
+    "electron": "^15.0.0",
+    "spectron": "^17.0.0"
   },
   "dependencies": {
     "bootstrap": "^5.1.3",
