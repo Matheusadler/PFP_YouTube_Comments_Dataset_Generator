@@ -4,7 +4,8 @@
   "description": "Aplicação para gerar datasets textuais preprocessados a partir de comentários de vídeos do YouTube",
   "main": "js/main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -18,8 +19,9 @@
   },
   "homepage": "https://github.com/Matheusadler/PFP_YouTube_Comments_Dataset_Generator#readme",
   "devDependencies": {
-    "electron": "^15.0.0",
-    "spectron": "^17.0.0"
+    "electron": "^13.1.4",
+    "mocha": "^10.0.0",
+    "spectron": "^15.0.0"
   },
   "dependencies": {
     "bootstrap": "^5.1.3",
