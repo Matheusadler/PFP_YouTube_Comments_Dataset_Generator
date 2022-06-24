@@ -1,12 +1,27 @@
+"""
+Autor: Matheus Adler
+Este script é responsável por buscar os videos no youtube dado um título de busca, salvar uma lista com os links dos videos que serão usados no script extract-comments.py
+e retornar a quantidade de videos encontrados.
+"""
 # bibliotecas utilizadas nesse script
-import os
-import argparse
-import numpy as np
+import os # biblioteca para manipulação de arquivos
+import argparse # biblioteca para manipulação de argumentos
+import numpy as np # biblioteca para manipulação numérica
 
-from youtubesearchpython import *
+from youtubesearchpython import * # importa o módulo que busca os videos no youtube
 
 
-def YoutubeSearch(query_string): # função que busca os videos no youtube
+def YoutubeSearch(query_string):
+    """
+    Esta função recebe como entrada uma string de busca e retorna uma lista com os links dos videos encontrados.
+    
+    [Argumentos]
+        query_string: string da busca a ser realizada no youtube.
+      
+    [Retorno]        
+        [list] video_list: lista com os links dos videos encontrados.
+    
+    """    
     customSearch = CustomSearch(query_string, VideoSortOrder.uploadDate, limit=15) # busca os videos no youtube 
     i = 0
     excpt = 0 # variável que armazera a quantidade de exceções

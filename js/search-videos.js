@@ -1,3 +1,8 @@
+/*
+Autor: Matheus Adler
+Este script é responsável pelos eventos de controle da página index.html, tendo como evento principal 
+a execução do script python search-videos.py e o load na tela de busca de vídeos.
+*/
 const { ipcRenderer } = require('electron'); // importa a função de comunicação com o processo principal da aplicação Electron
 const { PythonShell } = require('python-shell'); // importa a biblioteca para execução de scripts python
 var $ = jQuery = require('jquery'); // importa o jquery

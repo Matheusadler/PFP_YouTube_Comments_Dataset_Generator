@@ -1,20 +1,32 @@
+"""
+Autor: Matheus Adler
+Este script é responsável procesar os comentários de um vídeo do YouTube e salvar em um arquivo CSV.
+"""
 # bibliotecas utilizadas nesse script
-import re
-import os
-import nltk
-import string
-import argparse
-import pandas as pd
+import re # biblioteca para expressões regulares
+import os # biblioteca para manipulação de arquivos
+import nltk # biblioteca para processamento de linguagem natural
+import string # biblioteca para manipulação de strings
+import argparse # biblioteca para manipulação de argumentos
+import pandas as pd # biblioteca para manipulação de dataframes
 
-from youtubesearchpython import *
-from nltk.corpus import stopwords
+from nltk.corpus import stopwords # importação das stopwords
 
 import warnings
-warnings.filterwarnings("ignore")
+warnings.filterwarnings("ignore") # ignora avisos
 
 FILE_NAME = 'text_crawled.csv' # nome do arquivo que tem os comentarios extraidos
 
-def deEmojify(text): # remove emojis
+def deEmojify(text):
+    """
+    Esta função recebe como entrada um texto e remove os emojis.
+    
+    [Argumentos]
+        text: texto a ser processado.
+      
+    [Retorno]        
+        [string] texto sem emojis.
+    """  
     regrex_pattern = re.compile("[" 
                                 u"\U0001F600-\U0001F64F"  # emojis
                                 u"\U0001F300-\U0001F5FF"  # símbolos e pictogramas
@@ -38,7 +50,16 @@ def deEmojify(text): # remove emojis
     return regrex_pattern.sub(r'', text) 
 
 
-def text_cleaner(): # função principal que faz o preprocessamento dos comentarios
+def text_cleaner():
+    """
+    Esta função é responsável por fazer o preprocessamento dos comentários.
+    
+    [Argumentos]
+        null
+      
+    [Retorno]        
+        [csv] salva os comentários preprocessados em um arquivo CSV.
+    """  
     df = pd.read_csv(FILE_NAME) # le o arquivo csv com os comentarios
     df.columns = ['text', 'published time', 'author', 'id channel', 'link'] # renomeia as colunas
     progressbar = 0 # contador para a barra de progresso

@@ -1,3 +1,9 @@
+/*
+Autor: Matheus Adler
+Este script é responsável pelos eventos de controle da página extract-comments.html, tendo como evento principal 
+a chamada do script python extract-comments.py e a barra de progresso da coleta de comentários.
+*/
+
 const { ipcRenderer } = require('electron'); // importa a função de comunicação com o processo principal da aplicação Electron
 const { PythonShell } = require('python-shell'); // importa a biblioteca para execução de scripts python
 const fs = require('fs'); // importa sistema de arquivos do JavaScript
@@ -6,15 +12,16 @@ var $ = jQuery = require('jquery'); // importa o jquery
 
 // o bloco abaixo é chamado quando o html for totalmente carregado
 document.addEventListener('DOMContentLoaded', function () {
-    var args = ipcRenderer.sendSync('get-options', ""); // pega os argumentos salvos na tela de index
-    options = args[0]
+    var args = ipcRenderer.sendSync('get-options', ""); // [array] pega os argumentos salvos na tela de index
+    options = args[0] // [object] pega o objeto com os argumentos
     delete args
 
-    var video_list = ipcRenderer.sendSync('get-video-length', ""); // pega a quantidade de vídeos encontrados na pesquisa
-    var file = 'count.txt'; // cria o arquivo de texto "count.txt" que será usado para salvar a quantidade de vídeos encontrados, essa informação é necessária para a barra de progresso
-    var progress = 0; // inicializa a barra de progresso com o valor 0
+    var video_list = ipcRenderer.sendSync('get-video-length', ""); // [integer] pega a quantidade de vídeos encontrados na pesquisa
+    var file = 'count.txt'; // [string] cria o arquivo de texto "count.txt" que será usado para salvar a quantidade de vídeos encontrados, essa informação é necessária para a barra de progresso
+    var progress = 0; // [integer] inicializa a barra de progresso com o valor 0
 
-    PythonShell.run('extract-comments.py', options, function (err, comments) { // executa o script python "extract-comments.py"
+    // o bloco abaixo executa o script python "extract-comments.py" 
+    PythonShell.run('extract-comments.py', options, function (err, comments) { 
         if (err) { // se ocorrer algum erro 
             $("#modalError").modal('show'); // mostra o modal de erro
             document.getElementById("msgError").innerHTML = "Algum problema ocorreu ao extrair os comentários dos vídeos para sua pesquisa. Por favor, tente novamente."; // com essa mensagem de erro

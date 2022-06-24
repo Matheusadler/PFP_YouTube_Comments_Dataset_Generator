@@ -1,3 +1,8 @@
+/*
+Autor: Matheus Adler
+Este script é responsável pelos módulos de controle de vida util do processo principal da aplicação Electron e também por
+criar a janela principal da aplicação. Também tem como função a comunicação entre os processos js.
+*/
 // carregando os módulos do framework Electron
 const { app, BrowserWindow, dialog, ipcMain } = require('electron');
 

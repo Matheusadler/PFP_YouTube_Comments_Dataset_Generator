@@ -1,3 +1,8 @@
+/*
+Autor: Matheus Adler
+Este script é responsável pelos eventos de controle da página index.html, tendo como evento principal 
+armazenar a string de busca e o diretório de destino. 
+*/
 const { ipcRenderer } = require('electron'); // importa a função de comunicação com o processo principal da aplicação Electron
 const path = require('path'); // importa o sistema de arquivos
 
@@ -45,6 +50,7 @@ function validateInputs() {
     }
 }
 
+// essa função pega os argumentos da tela de index e salva através do evento 'save-options' definido no script main.js
 async function getOptions() {
     let query_string = document.getElementById("queryString").value; // pega o valor do input da string de busca
     let path_destiny = document.getElementById("inputPathDestiny").value; // pega o valor do input do diretório de destino

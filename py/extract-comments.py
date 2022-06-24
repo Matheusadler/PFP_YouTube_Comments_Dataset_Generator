@@ -1,28 +1,58 @@
+"""
+Autor: Matheus Adler
+Este script é responsável por extrair os comentários de um vídeo do YouTube e salvar em um arquivo CSV.
+"""
 # bibliotecas utilizadas nesse script
-import os
-import re
-import time
-import json
-import requests
-import numpy as np
-import pandas as pd
+import os # biblioteca para manipulação de arquivos
+import re # biblioteca para expressões regulares
+import time # biblioteca para manipulação de tempo
+import json # biblioteca para trabalhar com json
+import requests # biblioteca para requisições
+import numpy as np #biblioteca para manipulação numérica
+import pandas as pd # biblioteca para manipulação de dataframes
 
-import warnings
-warnings.filterwarnings("ignore")
+import warnings 
+warnings.filterwarnings("ignore") # ignora os avisos
 
-
+# constantes
 USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36' # agente dos navegadores
 FILE_NAME = 'text_crawled.csv' # nome do arquivo que será salvo com os comentários
 COMMENT_LIMIT = 10000 # limite de comentários a serem extraidos
 YT_CFG_RE = r'ytcfg\.set\s*\(\s*({.+?})\s*\)\s*;' # regex para extrair o json de configuração
 YT_INITIAL_DATA_RE = r'(?:window\s*\[\s*["\']ytInitialData["\']\s*\]|ytInitialData)\s*=\s*({.+?})\s*;\s*(?:var\s+meta|</script|\n)' # regex para realizar a busca no html
 
-def regex_search(text, pattern, group=1, default=None): # função para extrair informações do html
+def regex_search(text, pattern, group=1, default=None):
+    """
+    Esta função recebe um texto e um padrão de busca para extrair informações do html e retorna o resultado da busca.
+    
+    [Argumentos]
+        text: html da página
+        pattern: padrão de busca
+        group: número do grupo que será retornado
+        default: valor padrão caso não encontre o grupo
+        
+      
+    [Retorno]        
+        [string] resultado da busca
+    """ 
     match = re.search(pattern, text) 
     return match.group(group) if match else default
 
 
-def ajax_request(session, endpoint, ytcfg, retries=5, sleep=20): # função para realizar requisições ajax
+def ajax_request(session, endpoint, ytcfg, retries=5, sleep=20): 
+    """
+    Esta função realiza uma requisição ajax para obter os comentários.
+    
+    [Argumentos]
+        session: sessão do navegador
+        endpoint: endereço do comentário
+        ytcfg: json de configuração
+        retries: número de tentativas de requisição
+        sleep: tempo de espera entre as tentativas
+      
+    [Retorno]        
+        [string] json da requisição 
+    """ 
     url = 'https://www.youtube.com' + endpoint['commandMetadata']['webCommandMetadata']['apiUrl'] # url da requisição
 
     data = {'context': ytcfg['INNERTUBE_CONTEXT'],
@@ -38,7 +68,18 @@ def ajax_request(session, endpoint, ytcfg, retries=5, sleep=20): # função para
             time.sleep(sleep) # espera um tempo antes de tentar novamente
 
 
-def download_comments(YOUTUBE_VIDEO_URL, language=None, sleep=0.1): # função para extrair os comentários
+def download_comments(YOUTUBE_VIDEO_URL, language=None, sleep=0.1):
+    """
+    Esta função realiza a extração dos comentários de um vídeo do YouTube.
+    
+    [Argumentos]
+        YOUTUBE_VIDEO_URL: url do vídeo do YouTube
+        language: idioma da página
+        sleep: tempo de espera entre as tentativas
+      
+    [Retorno]        
+        [dict] informações do vídeo
+    """ 
     session = requests.Session() # cria uma sessão
     session.headers['User-Agent'] = USER_AGENT # define o agente do navegador
     response = session.get(YOUTUBE_VIDEO_URL) # requisição
@@ -89,7 +130,17 @@ def download_comments(YOUTUBE_VIDEO_URL, language=None, sleep=0.1): # função p
 
         time.sleep(sleep) # espera um tempo antes de tentar novamente
 
-def search_dict(partial, search_key): # função para procurar um dicionário
+def search_dict(partial, search_key):
+    """
+    Esta função procura um dicionário.
+    
+    [Argumentos]
+        partial: dicionário
+        search_key: chave a ser procurada
+      
+    [Retorno]        
+        [dict] dicionário encontrado
+    """ 
     stack = [partial] # adiciona o dicionário à pilha
     while stack: # enquanto houver elementos na pilha
         current_item = stack.pop() # pega o último elemento da pilha
@@ -103,7 +154,16 @@ def search_dict(partial, search_key): # função para procurar um dicionário
             for value in current_item: # para cada valor
                 stack.append(value) # adiciona o valor à pilha
 
-def main(url): # função principal
+def main(url):
+    """
+    Esta é a função principal do programa e realiza a extração dos comentários.
+    
+    [Argumentos]
+        url: url do vídeo do YouTube
+      
+    [Retorno]        
+        [csv] salva os comentários em um arquivo csv
+    """ 
     df_comment = pd.DataFrame() # cria um dataframe para os comentários
     try: 
         youtube_url = url # define a url do vídeo

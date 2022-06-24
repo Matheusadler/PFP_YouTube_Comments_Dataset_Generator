@@ -1,3 +1,8 @@
+/*
+Autor: Matheus Adler
+Este script é responsável pelos eventos de controle da página restart-process.html, tendo como evento principal 
+exibir informações sobre os arquivos gerados e voltar para a tela de index.
+*/
 const { ipcRenderer } = require('electron'); // importa a função de comunicação com o processo principal da aplicação Electron
 
 // o bloco abaixo é chamado quando o html for totalmente carregado

@@ -1,3 +1,8 @@
+/*
+Autor: Matheus Adler
+Este script é responsável pelos eventos de controle da página preprocessing-comments.html, tendo como evento principal 
+a execução do script python preprocessing-comments.py e a barra de progresso do processamento dos comentários.
+*/
 const { ipcRenderer } = require('electron'); // importa a função de comunicação com o processo principal da aplicação Electron
 const { PythonShell } = require('python-shell'); // importa a biblioteca para execução de scripts python
 const fs = require('fs'); // importa sistema de arquivos do JavaScript
