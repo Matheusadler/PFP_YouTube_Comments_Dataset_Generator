@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var progress = 0; // [integer] inicializa a barra de progresso com o valor 0
 
     // o bloco abaixo executa o script python "extract-comments.py" 
-    PythonShell.run('extract-comments.py', options, function (err, comments) { 
+    PythonShell.run('extract_comments.py', options, function (err, comments) { 
         if (err) { // se ocorrer algum erro 
             $("#modalError").modal('show'); // mostra o modal de erro
             document.getElementById("msgError").innerHTML = "Algum problema ocorreu ao extrair os comentários dos vídeos para sua pesquisa. Por favor, tente novamente."; // com essa mensagem de erro

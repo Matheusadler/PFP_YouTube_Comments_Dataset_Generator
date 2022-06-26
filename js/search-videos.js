@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     options = args[0] 
     delete args
 
-    PythonShell.run('search-videos.py', options, function (err, video_list) { // executa o script python "search-videos.py"
+    PythonShell.run('search_videos.py', options, function (err, video_list) { // executa o script python "search-videos.py"
         if (err) { // se ocorrer algum erro
             $("#modalError").modal('show'); // mostra o modal de erro
             document.getElementById("msgError").innerHTML = "Algum problema ocorreu ao buscar os vídeos para sua pesquisa. Por favor, tente novamente."; // com essa mensagem de erro

@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var file = 'count_preprocessing.txt'; // cria o arquivo de texto "count_preprocessing.txt" que será usado para salvar a quantidade de comentários processados, essa informação é necessária para a barra de progresso
     var progress = 0; // inicializa a barra de progresso com o valor 0
 
-    PythonShell.run('preprocessing-comments.py', options, function (err) { // executa o script python "preprocessing-comments.py"
+    PythonShell.run('preprocessing_comments.py', options, function (err) { // executa o script python "preprocessing-comments.py"
         if (err) { // se ocorrer algum erro
             $("#modalError").modal('show'); // mostra o modal de erro
             document.getElementById("msgError").innerHTML = "Algum problema ocorreu ao processar o dataset de sua pesquisa. Por favor, tente novamente."; // com essa mensagem de erro
