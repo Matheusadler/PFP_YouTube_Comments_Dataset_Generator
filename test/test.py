@@ -3,14 +3,14 @@ Autor: Matheus Adler
 Este script é responsável por realizar testes de unidade nos módulos do sistema.
 
 """
-import sys
-import unittest
+import sys # importa a biblioteca sys para uso do argumento de entrada
+import unittest # importa a biblioteca unittest para uso dos métodos de teste
 
-import warnings 
+import warnings # importa a biblioteca warnings para ocultar avisos
 
-sys.path.append('../')
+sys.path.append('../') # adiciona o diretório pai ao path
     
-from py import search_videos, extract_comments, preprocessing_comments
+from py import search_videos, extract_comments, preprocessing_comments # importa os scripts usados como módulos para o teste
 
 class Test(unittest.TestCase):
     def test_search_videos(self):
@@ -34,15 +34,6 @@ class Test(unittest.TestCase):
         """
         comment_preprocessed = preprocessing_comments.text_cleaner()
         self.assertEqual(comment_preprocessed, True)
-        
-    
-    
-        
-        
-        
-    
-    
-        
 
 if __name__ == '__main__':
     unittest.main()
