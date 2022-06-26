@@ -6,3 +6,4 @@ count_preprocessing.txt
 text_crawled.csv
 text_preprocessed.csv
 video_list.npy
+py/__pycache__/
