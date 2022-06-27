@@ -1,0 +1,53 @@
+<!--Autor: Matheus Adler-->
+<!-- Página inicial onde o usuários vai definir os parâmetros desejados -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>YouTube Comments Dataset Generator</title>
+
+    <!-- css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="../css/app.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-sm p-5">
+        <div id="title" class="text-center fw-bold">
+            <h3>YouTube Comments Dataset Generator</h3>
+        </div>
+        <div class="container">
+            <form class="form-horizontal">
+                <div class="form-group mx-5">
+                    <label for="directory" class="form-label">Diretório de destino:</label>
+                    <span id="spanPathDestiny" class="form-text badge text-bg-danger" hidden>Por favor, selecione um diretório válido</span>
+                    <input type="text" class="form-control" id="inputPathDestiny" placeholder="./" data-toggle="tooltip"
+                        data-placement="top" disabled>
+                    <div id="directoryHelp" class="form-text">Selecione o diretório que deseja salvar o arquivo .csv
+                        <button id="buttonPathDestiny" type="button"
+                            class="btn btn-sm btn-outline-primary float-end my-1">Selecione o diretório</button>
+                    </div>
+                </div>
+                <div class="form-group mx-5 mt-4">
+                    <label for="parameter">Insira uma busca a ser realizada no youtube:</label>
+                    <span id="spanQueryString" class="form-text badge text-bg-danger" hidden>Por favor, informe um título de busca</span>
+                    <input type="text" class="form-control" id="queryString" data-bind="value:queryString" />
+                </div>
+                <div class="mx-5">
+                    <button class="btn btn-sm btn-primary my-1" type="button" id="confirmButton">Buscar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- bootstrap js -->
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- arquivo js executado na tela de index -->
+    <script defer src="../js/index.js"></script>
+</body>
+
+</html>

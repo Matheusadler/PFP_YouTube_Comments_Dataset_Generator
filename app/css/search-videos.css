@@ -1,0 +1,32 @@
+/* 
+Autor: Matheus Adler
+Este arquivo contém as configurações de estilo da página search-videos.html
+*/
+body {
+    margin: 0;
+    min-width: 250px;
+    background-color: #F0F0F7;
+    color: #000000;
+    font-family: Georgia;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.load-icon{
+    animation: is-rotating 1s infinite;
+    width: 50px;
+    height: 50px;
+    border: 6px solid #bfbdbd;
+    border-top-color: #51d4db;
+    border-radius: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @keyframes is-rotating {
+      to {
+          transform: rotate(1turn);
+      }
+  }
