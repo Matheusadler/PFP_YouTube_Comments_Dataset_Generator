@@ -1,9 +1,9 @@
 # Modulos do Electron
-node_modules/
-package-lock.json
+app/node_modules/
+app/package-lock.json
 count.txt
 count_preprocessing.txt
 text_crawled.csv
 text_preprocessed.csv
 video_list.npy
-py/__pycache__/
+app/py/__pycache__/
