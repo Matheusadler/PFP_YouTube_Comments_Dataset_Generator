@@ -18,6 +18,7 @@ class Test(unittest.TestCase):
         Teste da função de busca dos vídeos
         """
         video_list = type(search_videos.YoutubeSearch("string de busca")).__name__
+        print("Retorno esperado da função de busca dos vídeos [list]: " + video_list)
         self.assertEqual(video_list, "list")
 
     def test_crawler(self):
@@ -26,6 +27,7 @@ class Test(unittest.TestCase):
         """
         warnings.filterwarnings("ignore") # ignora os avisos
         comments = extract_comments.crawler("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+        print("Retorno esperado da função de extrair os comentários [True]: " + str(comments))
         self.assertEqual(comments, True)
     
     def test_text_cleaner(self):
@@ -33,6 +35,7 @@ class Test(unittest.TestCase):
         Teste da função de preprocessamento dos comentários
         """
         comment_preprocessed = preprocessing_comments.text_cleaner()
+        print("Retorno esperado da função de pré-processamento dos comentários [True]: " + str(comment_preprocessed))
         self.assertEqual(comment_preprocessed, True)
 
 if __name__ == '__main__':
