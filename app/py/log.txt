@@ -1,0 +1,9 @@
+PS C:\Users\mathe\OneDrive\PUC\PFP_YouTube_Comments_Dataset_Generator\app\test> python test.py
+Retorno esperado da função de extrair os comentários [True]: True
+.Retorno esperado da função de busca dos vídeos [list]: list
+.Retorno esperado da função de pré-processamento dos comentários [True]: True
+.
+----------------------------------------------------------------------
+Ran 3 tests in 17.275s
+
+OK
