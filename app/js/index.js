@@ -22,30 +22,31 @@ function validateInputs() {
     let query_string = document.getElementById("queryString").value; // pega o valor do input da string de busca
     let requiredSpanPathDestiny = document.getElementById("spanPathDestiny"); // pega o span que mostra o erro do diretório de destino
     let requiredSpanQueryString = document.getElementById("spanQueryString"); // pega o span que mostra o erro da string de busca
-    let valideInputs = false; // chave para saber se todos os campos foram preenchidos
+    let valideInputPathDestiny = false; // chave para saber se o path destiny foi preenchido
+    let valideInputQueryString = false; // chave para saber se o query string foi preenchido
 
 
     if (path_destiny == "") { // checa se o campo do diretório de destino está vazio
         requiredSpanPathDestiny.hidden = false; // se estiver vazio, mostra o span de erro
         path_destiny.required = true; // marca o campo como obrigatório
-        valideInputs = false; // se o campo estiver vazio, não é válido
+        valideInputPathDestiny = false; // se o campo estiver vazio, não é válido
     } else {
         requiredSpanPathDestiny.hidden = true; // se o campo não estiver vazio, esconde o span de erro
         path_destiny.required = false; // desmarca o campo como obrigatório
-        valideInputs = true; // se o campo não estiver vazio, é válido
+        valideInputPathDestiny = true; // se o campo não estiver vazio, é válido
     }
 
     if (query_string == "") { // checa se o campo da string de busca está vazio
         requiredSpanQueryString.hidden = false; // se estiver vazio, mostra o span de erro
         query_string.required = true; // marca o campo como obrigatório
-        valideInputs = false; // se o campo estiver vazio, não é válido
+        valideInputQueryString = false; // se o campo estiver vazio, não é válido
     } else {
         requiredSpanQueryString.hidden = true; // se o campo não estiver vazio, esconde o span de erro
         query_string.required = false; // desmarca o campo como obrigatório
-        valideInputs = true; // se o campo não estiver vazio, é válido
+        valideInputQueryString = true; // se o campo não estiver vazio, é válido
     }
 
-    if (valideInputs) {
+    if (valideInputPathDestiny && valideInputQueryString) { // checa se os campos estão válidos
         getOptions(); // se todos os campos foram preenchidos, chama a função que pega os argumentos e envia para o script python
     }
 }
