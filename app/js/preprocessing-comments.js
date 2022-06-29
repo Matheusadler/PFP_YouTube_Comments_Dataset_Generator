@@ -20,8 +20,13 @@ document.addEventListener('DOMContentLoaded', function () {
     var progress = 0; // inicializa a barra de progresso com o valor 0
 
     PythonShell.run('preprocessing_comments.py', options, function (err) { // executa o script python "preprocessing-comments.py"
-        $("#modalSuccess").modal('show'); // mostra o modal de sucesso
-        document.getElementById("msgSuccess").innerHTML = "Dataset processado com sucesso!"; // com essa mensagem de sucesso 
+        if (err) { // se ocorrer algum erro
+            $("#modalError").modal('show'); // mostra o modal de erro
+            document.getElementById("msgError").innerHTML = "Algum problema ocorreu ao processar o dataset de sua pesquisa. Por favor, tente novamente."; // com essa mensagem de erro
+        } else { // se não ocorrer nenhum erro
+            $("#modalSuccess").modal('show'); // mostra o modal de sucesso
+            document.getElementById("msgSuccess").innerHTML = "Dataset processado com sucesso!"; // com essa mensagem de sucesso
+        }
     });
 
     let delay = 1000; // 1 segundo   

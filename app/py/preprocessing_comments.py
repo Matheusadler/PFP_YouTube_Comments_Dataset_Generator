@@ -9,6 +9,8 @@ import nltk # biblioteca para processamento de linguagem natural
 import string # biblioteca para manipulação de strings
 import argparse # biblioteca para manipulação de argumentos
 import pandas as pd # biblioteca para manipulação de dataframes
+nltk.download('punkt')
+nltk.download('stopwords')
 
 from nltk.corpus import stopwords # importação das stopwords
 
