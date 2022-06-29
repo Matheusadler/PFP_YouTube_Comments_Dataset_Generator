@@ -28,7 +28,7 @@ $ npm install
 
 ## Instalação de pacotes Python
 ```bash
-$ npm install pip install -qr py/requirements.txt
+$ pip install -qr py/requirements.txt
 ```
 
 ## Iniciando a aplicação
